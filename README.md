@@ -49,9 +49,12 @@ To check Netdata logs inside the container:
 docker logs netdata
 
 📷 Deliverables
+
 Screenshot of the Netdata dashboard with CPU, memory, and Docker metrics.
 
 this README.
+
+Q&A #questions and answers
 
 📷 Dashboard Screenshots:
 
