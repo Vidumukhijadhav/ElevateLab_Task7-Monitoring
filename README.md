@@ -55,8 +55,7 @@ this README.
 
 📷 Dashboard Screenshots:
 
-1.
-
+have uploaded!
 
 
 ✅ Output:
