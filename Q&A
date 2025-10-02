@@ -1,0 +1,71 @@
+1. What does Netdata monitor?
+
+Netdata monitors a wide range of system and application metrics in real time, such as:
+
+CPU usage (per core, load average)
+Memory (used, cached, swap)
+Disk (I/O, read/write, usage)
+Network (bandwidth, packets, errors)
+Processes (per PID, top apps)
+Docker/Kubernetes containers (resource usage per container)
+Databases, web servers, apps (via collectors)
+
+2️. How do you view real-time metrics?
+
+Netdata provides a web-based dashboard at http://<server-ip>:19999.
+Metrics are displayed as interactive charts that update per second.
+You can drill down into details for CPU, RAM, disk, containers, etc.
+
+3️. What is a collector?
+   collector in Netdata is a plugin that gathers metrics from different sources.
+
+Example collectors:
+
+proc plugin → reads Linux /proc files (CPU, memory, etc.)
+docker plugin → monitors Docker containers
+mysql plugin → collects MySQL database metrics
+
+Collectors feed data to the dashboard and alerting engine.
+
+4️. How is Netdata different from Prometheus?
+
+            Netdata 🖥️	                                                  Prometheus 📊
+Data collection	Comes with built-in collectors	                  Relies on exporters
+Visualization	Real-time charts out of the box              	      Needs Grafana or other tools
+Storage	Keeps recent data in RAM (lightweight)            	      Stores long-term time-series data
+Use case	Great for real-time monitoring & troubleshooting      	Best for historical analysis & scaling
+
+            In short: Netdata = real-time observability, Prometheus = long-term metrics + alerts.
+
+5️. What are some performance KPIs to watch?
+
+Some important KPIs with Netdata:
+
+CPU load (if >80%, system is stressed)
+Memory usage (high swap usage = memory bottleneck)
+Disk I/O latency (slow disk = bottleneck)
+Network throughput (bandwidth utilization, packet drops)
+Container metrics (per service resource usage)
+System health alarms (built-in thresholds)
+
+6️. How to deploy Netdata on a VM?
+
+Install via Docker
+            docker run -d --name=netdata -p 19999:19999 netdata/netdata
+OR
+Install directly on Linux
+            bash <(curl -Ss https://my-netdata.io/kickstart.sh)
+Access at → http://<vm-ip>:19999
+
+7️. How does Netdata alerting work?
+
+Netdata has a health monitoring system with pre-configured alarms (e.g., high CPU, low disk space).
+Alerts can be sent via email, Slack, Discord, PagerDuty, etc.
+Alarms are defined in YAML configs (health.d directory).
+Thresholds are customizable.
+
+8️. What is a dashboard in this context?
+
+The dashboard is the web UI where Netdata visualizes metrics.
+It’s interactive, real-time, and auto-refreshing.
+You can explore per-second charts, drill into subsystems, and view container metrics in one place.
